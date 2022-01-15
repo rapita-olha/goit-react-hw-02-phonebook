@@ -19,8 +19,6 @@ class ContactsList extends Component {
     contacts: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
-        // name: PropTypes.string.isRequired,
-        // number: PropTypes.string.isRequired,
       }),
     ).isRequired,
     onClick: PropTypes.func.isRequired,
@@ -30,15 +28,11 @@ class ContactsList extends Component {
     const { contacts, onClick } = this.props;
     return (
       <Ul>
-        {[...contacts]
-          .sort((contactA, contactB) =>
-            contactA.name.localeCompare(contactB.name),
-          )
-          .map(contact => (
-            <Li key={contact.id}>
-              <ContactsListItem contact={contact} onClick={onClick} />
-            </Li>
-          ))}
+        {[...contacts].map(contact => (
+          <Li key={contact.id}>
+            <ContactsListItem contact={contact} onClick={onClick} />
+          </Li>
+        ))}
       </Ul>
     );
   }
